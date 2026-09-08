@@ -1,0 +1,134 @@
+\documentclass[a4paper,twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage[bahasa]{babel}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage[cm]{fullpage}
+\pagestyle{myheadings} 
+\usepackage{etoolbox}
+\usepackage{setspace} 
+\usepackage{lipsum} 
+\setlength{\headsep}{30pt}
+\usepackage[inner=2cm,outer=2.5cm,top=2.5cm,bottom=2cm]{geometry} %margin
+% \pagestyle{empty}
+
+\makeatletter
+\renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
+\renewcommand{\thispagestyle}[1]{}
+\markright{\textbf{\textsc{AIF184001/AIF184002 \textemdash Rencana Kerja Tugas Akhir \textemdash Sem. Ganjil 2026/2027}}}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
+\renewcommand{\baselinestretch}{1}
+\setlength{\parindent}{0 pt}
+\setlength{\parskip}{6 pt}
+
+\onehalfspacing
+
+\begin{document}
+	
+	\title{\@judultopik}
+	\author{\nama \textendash \@npm} 
+	
+	%tulis nama dan NPM anda di sini:
+	\newcommand{\nama}{Bryan Ricaldi Chandra}
+	\newcommand{\@npm}{6182301013}
+	\newcommand{\@judultopik}{Explorasi Reinforcement Learning menggunakan Gymnasium} % Judul/topik anda
+	\newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
+	\newcommand{\tanggal}{04/09/2026}
+	
+	% Dokumen hasil template ini harus dicetak bolak-balik !!!!
+	
+	\maketitle
+	
+	\pagenumbering{arabic}
+	
+	\section{Deskripsi}
+	Pada tugas akhir ini, dilakukan eksplorasi, perancangan, dan implementasi algoritma \textit{Reinforcement Learning} (RL) klasik secara mandiri untuk 
+	menyelesaikan berbagai masalah pengambilan keputusan. Eksperimen ini memanfaatkan library python dari OpenAI yaitu Gymnasium API, yang menyediakan lingkungan 
+	konsisten seperti \textit{CartPole},  \textit{Taxi}, \textit{BlackJack}, serta lingkungan lainya. Melalui pengujian pada lingkungan tersebut, performa 
+	serta perilaku agen akan dianalisis dan dibandingkan.
+	
+	Gymnasium menyediakan antarmuka yang terstruktur untuk mengatur interaksi agen, salah satunya adalah pemisahan kondisi \textit{terminated} dan \textit{truncated}. Kondisi terminated menandakan bahwa agen telah mencapai kondisi akhir simulasi (sukses atau gagal), sedangkan truncated menandakan simulasi diberhentikan secara paksa karena batasan eksternal, seperti batas waktu maksimal.
+	
+	Algoritma klasik \textit{RL} yang akan diimplementasikan pada tugas akhir ini adalah \textit{Q-Learning} dan \textit{SARSA}. Untuk mengevaluasi kendala algoritma tersebut, agen cerdas akan diuji pada beberapa lingkungan simulasi bawaan Gymnasium yang memiliki karakteristik berbeda beda. 
+	
+	\section{Rumusan Masalah}
+	\begin{enumerate}
+		\item Bagaimana implementasi algoritma RL klasik secara mandiri agar dapat berinteraksi dengan Gymnasium API?
+		\item Bagaimana perbandingan agen menggunakan algoritma klasik seperti Q-Learning dan SARSA  ketika diuji pada lingkungan yang berbeda beda?
+		\item Bagaimana pengaruh \textit{hyperparameter} seperti learning rate dapat mempengaruhi kecepatan belajar dan keputusan agen?
+	\end{enumerate}
+	
+	\section{Tujuan}
+	\begin{enumerate}
+		\item Mengimplementasikan algoritma RL klasik secara mandiri agar dapat beiinteraksi dengan Gymnasium API.
+		\item Menganalisis dan membadingkan peforma agen yang dibangun dengan algoritma klasik seperti Q-Learning dan SARSA ketika diuji pada lingkungan yang berbeda beda.
+		\item Mengevaluasi pengaruh \textit{hyperparameter} seperti \textit{learning rate} dapat mempengaruhi kecepatan belajar dan keputusan agen.
+	\end{enumerate}
+	
+	\section{Deskripsi Perangkat Lunak}
+	Tuliskan deksripsi dari perangkat lunak yang akan anda hasilkan. Apa saja fitur yang disediakan oleh PL tersebut dan apa saja kemampuan dari PL tersebut. Perhatikan contoh di bawah ini:
+	
+	Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
+	\begin{itemize}
+		\item Pengguna dapat melihat denah Musem Geologi Bandung dalam bidang dua dimensi. Sedangkan pengunjung direpresentasikan menggunakan lingkaran-lingkaran kecil (tidak menggunakan gambar manusia yang diambil dari atas)
+		\item Pengguna dapat memunculkan atau menghilangkan gambar {\it flow tiles} pada denah museum. 
+		\item Pengguna dapat mengatur jalannya simulasi: memulai(start) simulasi, menunda(pause) simulasi, melanjutkan(continue) simulasi, maupun menghentikan(stop) simulasi
+		\item Pengguna dapat mengatur banyaknya pengunjung di dalam museum, baik melalui perubahan frekuensi kedatangan pengunjung maupun menambahkan dan menghapus pengunjung satu-persatu secara manual.
+		\item Posisi kamera dapat diubah (pergerakan di bidang tiga dimensi) sehingga pengguna dapat melihat simulasi di museum dari berbagai arah. 
+		\item Posisi kamera dapat diubah untuk emngikuti perjalanan seorang pengunjung di dalam 
+		\item Pengguna dapat memilih apakah akan menggunakan teknik {\it flow tiles} atau tidak pada saat simulasi berlangsung
+		\item Jenis {\it flow tiles} yang digunakan dapat diubah-ubah pada saat simulasi sedang berlangsung
+		
+	\end{itemize}
+	
+	\section{Detail Pengerjaan Tugas Akhir}
+	Tuliskan bagian-bagian pengerjaan skripsi secara detail. Bagian pekerjaan tersebut mencakup awal hingga akhir skripsi, termasuk di dalamnya pengerjaan dokumentasi skripsi, pengujian, survei, dll.
+	
+	\begin{enumerate}
+		\item 
+	\end{enumerate}
+	
+\section{Rencana Kerja}
+Rincian capaian yang direncanakan pada penyelesaian Tugas Akhir 1 (Bab 1 hingga Bab 3) adalah sebagai berikut:
+\begin{enumerate}
+	\item Melakukan studi literatur secara mendalam mengenai konsep \textit{Reinforcement Learning} (RL)
+	\item Melakukan studi mandiri terhadap bahasa pemrograman Python
+	\item Mempelajari dokumentasi dan kerangka kerja dari Gymnasium API
+	\item Merumuskan parameter pengujian (\textit{hyperparameter}) seperti \textit{learning rate}, \textit{discount factor}, dan probabilitas eksplorasi ($\epsilon$), serta menentukan metrik evaluasi performa (seperti imbalan kumulatif dan konvergensi).
+	\item Menyusun dokumen laporan Tugas Akhir 1
+\end{enumerate}
+	
+	Sedangkan yang akan diselesaikan di Tugas Akhir 2 adalah sebagai berikut:
+	\begin{enumerate}
+		\item Mengimplementasikan algoritma \textit{Reinforcement Learning}, yaitu \textit{Q-Learning} dan \textit{SARSA}
+		\item Mengimplementasikan algoritma yang telah dibuat agar dapat berinteraksi langsung dengan berbagai lingkungan simulasi dari library Gymnasium.
+		\item Melakukan eksperimen dan pengujian performa agen menggunakan berbagai variasi \textit{hyperparameter}.
+		\item Menganalisis hasil eksperimen secara komparatif 
+		\item Menyusun dan finalisasi dokumen laporan akhir Tugas Akhir.
+	\end{enumerate}
+	
+	\vspace{1cm}
+	\centering Bandung, \tanggal\\
+	\vspace{2cm} \nama \\ 
+	\vspace{1cm}
+	
+	Menyetujui, \\
+	\ifdefstring{\jumpemb}{2}{
+		\vspace{1.5cm}
+		\begin{centering} Menyetujui,\\ \end{centering} \vspace{0.75cm}
+		\begin{minipage}[b]{0.45\linewidth}
+			% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013 \\
+			\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Utama
+		\end{minipage} \hspace{0.5cm}
+		\begin{minipage}[b]{0.45\linewidth}
+			% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+			\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Pendamping
+		\end{minipage}
+		\vspace{0.5cm}
+	}{
+		% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+		\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Tunggal
+	}
+\end{document}
