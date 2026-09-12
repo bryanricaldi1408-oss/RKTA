@@ -50,10 +50,13 @@
 	
 	Gymnasium menyelesaikan permasalahan sebelumnya yaitu dengan cara memberikan pengguna antarmuka terstandardisasi yang memungkinkan penggunaan yang luas antara lingkungan simulasi dan algoritma pelatihan.  Gymnasium menyederhanakan proses pelatihan model dengan menyediakan lingkungan yang konsisten, koleksi lingkungan bawaan yang mudah dikonfigurasi, serta perangkat pendukung untuk membangun lingkungan kustom. Melalui pendekatan terpadu ini, Gymnasium secara signifikan membantu memastikan konsitensi dan ketahanan riset RL.
 	
-	Adapun algoritma klasik RL yang akan diimplementasikan pada tugas akhir ini adalah \textit{Q-Learning} dan \textit{SARSA}. Pemilihan kedua algoritma ini didasari oleh perbedaan fundamental dalam cara keduanya mempelajari kebijakan (\textit{policy}). \textit{Q-Learning} merupakan algoritma \textit{off-policy} yang mencari rute paling absolut dan optimal, namun cenderung berisiko tinggi dan berfluktuasi selama masa pelatihan. Sebaliknya, \textit{SARSA} adalah algoritma \textit{on-policy} yang\textbf{} memperbarui nilainya berdasarkan tindakan aktual, sehingga lebih adaptif terhadap risiko, lebih aman, dan menghasilkan grafik performa yang lebih stabil. Untuk mengevaluasi keandalan dari kedua algoritma tersebut, agen cerdas akan diuji pada beberapa lingkungan simulasi bawaan Gymnasium yang memiliki tingkat kompleksitas yang berbeda-beda.
+	Secara mendasar, menurut Sutton dan Barto (2018), \textit{Reinforcement Learning} didefinisikan sebagai proses pembelajaran tentang apa yang harus dilakukan yaitu bagaimana memetakan situasi ke dalam tindakan untuk memaksimalkan sinyal imbalan(\textit{reward}) numerik. Karakteristik utama dari \textit{Reinforcement Leaerning} adalah agen tidak diarahkan secara eksplisit mengenai tindakan mana yang harus dipilih, melainkan harus menemukan dan meksplorasi sendiri tindakan yang menghasilkan imbalan tertinggi melalui interaksi langsung terhadap lingkungan secara berulang.
 	
-	% Satu paragraf ngejelasin bedanya algoritma Sarsa dan QLearning menurut buku sunttto 
-	% Satu paragraf menjelaskan tentang Markov Decision Model
+	\textit{Reinforcement Learning} (RL) berbeda dengan paradigma \textit{Machine Learning} lainnya, RL merupakan paradigma tersendiri, berdampingan dengan \textit{supervised learning} dan \textit{unsupervised learning}. RL lebih berfokus ke bagaimana agen belajar melalui keputusan yang diambil dan pengaruhnya ke lingkungan. Sedangkan pendekatan ML lainnya lebih berfokus ke mencari pola pada data dan merumuskan sebuah formula untuk keadaan yang umum.
+		
+	Dalam tugas akhir kali ini, dua algoritma \textit{Temporal-Difference} (TD) klasik berbasis nilai (\textit{value-based}), yaitu SARSA dan Q-Learning, akan diimplementasikan secara mandiri untuk mengevaluasi perbedaan mendasar pada perilakunya.
+	
+
 	
 	\section{Rumusan Masalah}
 	\begin{enumerate}
@@ -69,9 +72,7 @@
 		\item Mengevaluasi pengaruh \textit{hyperparameter} seperti \textit{learning rate} dapat mempengaruhi kecepatan belajar dan keputusan agen.
 	\end{enumerate}
 	
-	\section{Deskripsi Perangkat Lunak}
-	Tuliskan deksripsi dari perangkat lunak yang akan anda hasilkan. Apa saja fitur yang disediakan oleh PL tersebut dan apa saja kemampuan dari PL tersebut. Perhatikan contoh di bawah ini:
-	
+	\section{Deskripsi Perangkat Lunak}	
 	Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
 	\begin{itemize}
 		\item Pengguna dapat melihat denah Musem Geologi Bandung dalam bidang dua dimensi. Sedangkan pengunjung direpresentasikan menggunakan lingkaran-lingkaran kecil (tidak menggunakan gambar manusia yang diambil dari atas)
@@ -89,14 +90,17 @@
 	Tuliskan bagian-bagian pengerjaan skripsi secara detail. Bagian pekerjaan tersebut mencakup awal hingga akhir skripsi, termasuk di dalamnya pengerjaan dokumentasi skripsi, pengujian, survei, dll.
 	
 	\begin{enumerate}
-		\item \textbf{Tahap Persiapan dan Studi Literatur}
-		\begin{itemize}
-			\item Melakukan studi literatur terkait konsep dasar algoritma dasar RL
-			\item Mempelajari dokumentasi library Gymnasium, khususnya mengenai struktur API
-			\item Mempelajari bahasa Python dan semua library yang dibutuhkan seperti Numpy
-		\end{itemize}
-		
-		
+		\item Melakukan studi literatur mengenai konsep fundamental \textit{Reinforcement Learning} serta prinsip kerja algoritma klasik Q-Learning dan SARSA.
+		\item Mendalami bahasa pemrograman Python beserta pustaka numerik pendukung untuk kebutuhan implementasi algoritma dan analisis data.
+		\item Mempelajari dokumentasi teknis Gymnasium API, khususnya terkait arsitektur antarmuka ruang tindakan (\textit{action space}) dan ruang observasi (\textit{observation space}).
+		\item Mengimplementasikan algoritma Q-Learning secara mandiri menggunakan bahasa pemrograman Python.
+		\item Mengimplementasikan algoritma SARSA secara mandiri menggunakan bahasa pemrograman Python.
+		\item Menyeleksi dan merumuskan lingkungan simulasi pada Gymnasium API yang relevan untuk pengujian.
+		\item Menetapkan metrik evaluasi performa agen, seperti akumulasi imbalan (\textit{cumulative reward}), efisiensi jumlah langkah per episode.
+		\item Merancang variasi dan konfigurasi hiperparameter eksperimen, mencakup laju pembelajaran (\textit{learning rate} $\alpha$), faktor diskon (\textit{discount factor} $\gamma$), serta skema eksplorasi $\epsilon$-\textit{greedy}.
+		\item Mengeksekusi eksperimen pelatihan dan pengujian agen secara sistematis pada lingkungan simulasi yang telah ditentukan.
+		\item Menganalisis dan membandingkan hasil eksperimen untuk mengevaluasi perilaku serta performa kedua algoritma.
+		\item Menyusun laporan tugas akhir dan mendokumentasikan seluruh hasil eksperimen secara komprehensif.
 	\end{enumerate}
 	
 \section{Rencana Kerja}
