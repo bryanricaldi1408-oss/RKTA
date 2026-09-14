@@ -50,13 +50,24 @@
 	
 	Gymnasium menyelesaikan permasalahan sebelumnya yaitu dengan cara memberikan pengguna antarmuka terstandardisasi yang memungkinkan penggunaan yang luas antara lingkungan simulasi dan algoritma pelatihan.  Gymnasium menyederhanakan proses pelatihan model dengan menyediakan lingkungan yang konsisten, koleksi lingkungan bawaan yang mudah dikonfigurasi, serta perangkat pendukung untuk membangun lingkungan kustom. Melalui pendekatan terpadu ini, Gymnasium secara signifikan membantu memastikan konsitensi dan ketahanan riset RL.
 	
-	Secara mendasar, menurut Sutton dan Barto (2018), \textit{Reinforcement Learning} didefinisikan sebagai proses pembelajaran tentang apa yang harus dilakukan yaitu bagaimana memetakan situasi ke dalam tindakan untuk memaksimalkan sinyal imbalan(\textit{reward}) numerik. Karakteristik utama dari \textit{Reinforcement Leaerning} adalah agen tidak diarahkan secara eksplisit mengenai tindakan mana yang harus dipilih, melainkan harus menemukan dan meksplorasi sendiri tindakan yang menghasilkan imbalan tertinggi melalui interaksi langsung terhadap lingkungan secara berulang.
+	Secara mendasar, menurut Sutton dan Barto (2018), \textit{Reinforcement Learning} didefinisikan sebagai proses pembelajaran tentang apa yang harus dilakukan yaitu bagaimana memetakan situasi ke dalam tindakan untuk memaksimalkan sinyal imbalan(\textit{reward}) numerik. Karakteristik utama dari \textit{Reinforcement Leaerning} adalah agen tidak diarahkan secara eksplisit mengenai tindakan mana yang harus d 	ipilih, melainkan harus menemukan dan meksplorasi sendiri tindakan yang menghasilkan imbalan tertinggi melalui interaksi langsung terhadap lingkungan secara berulang.
 	
 	\textit{Reinforcement Learning} (RL) berbeda dengan paradigma \textit{Machine Learning} lainnya, RL merupakan paradigma tersendiri, berdampingan dengan \textit{supervised learning} dan \textit{unsupervised learning}. RL lebih berfokus ke bagaimana agen belajar melalui keputusan yang diambil dan pengaruhnya ke lingkungan. Sedangkan pendekatan ML lainnya lebih berfokus ke mencari pola pada data dan merumuskan sebuah formula untuk keadaan yang umum.
-		
-	Dalam tugas akhir kali ini, dua algoritma \textit{Temporal-Difference} (TD) klasik berbasis nilai (\textit{value-based}), yaitu SARSA dan Q-Learning, akan diimplementasikan secara mandiri untuk mengevaluasi perbedaan mendasar pada perilakunya.
 	
-
+	Secara spesifik, algoritma yang akan diimplementasikan pada Tugas Akhir ini adalah Q-Learning dan SARSA (\textit{State-Action-Reward-State-Action}). Kedua algoritma tersebut merupakan bagian dari metode \textit{Temporal-Difference} (TD) \textit{Learning}, yang memungkinkan sebuah agen untuk belajar, memperbarui estimasi nilai, dan memperbaiki strateginya secara progresif sesaat setelah suatu aksi dieksekusi.
+	
+	Pembaruan nilai pada algoritma Q-Learning didefinisikan melalui persamaan berikut:
+	\begin{equation}
+		Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \left[ R_{t+1} + \gamma \max_{a} Q(S_{t+1}, a) - Q(S_t, A_t) \right]
+	\end{equation}
+	
+	Sementara itu, pembaruan estimasi nilai pada algoritma SARSA dirumuskan sebagai berikut:
+	\begin{equation}
+		Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha \left[ R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t) \right]
+	\end{equation}
+	
+	Perbedaan utama di antara keduanya terletak pada cara perhitungan nilai target. Algoritma Q-Learning mengevaluasi nilai berdasarkan aksi yang secara teoretis memberikan \textit{reward} maksimal pada \textit{state} berikutnya. Sebaliknya, SARSA mengevaluasi nilai berdasarkan aksi spesifik yang secara nyata akan dilakukan oleh agen pada \textit{state} berikutnya.
+		
 	
 	\section{Rumusan Masalah}
 	\begin{enumerate}
@@ -75,15 +86,11 @@
 	\section{Deskripsi Perangkat Lunak}	
 	Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
 	\begin{itemize}
-		\item Pengguna dapat melihat denah Musem Geologi Bandung dalam bidang dua dimensi. Sedangkan pengunjung direpresentasikan menggunakan lingkaran-lingkaran kecil (tidak menggunakan gambar manusia yang diambil dari atas)
-		\item Pengguna dapat memunculkan atau menghilangkan gambar {\it flow tiles} pada denah museum. 
-		\item Pengguna dapat mengatur jalannya simulasi: memulai(start) simulasi, menunda(pause) simulasi, melanjutkan(continue) simulasi, maupun menghentikan(stop) simulasi
-		\item Pengguna dapat mengatur banyaknya pengunjung di dalam museum, baik melalui perubahan frekuensi kedatangan pengunjung maupun menambahkan dan menghapus pengunjung satu-persatu secara manual.
-		\item Posisi kamera dapat diubah (pergerakan di bidang tiga dimensi) sehingga pengguna dapat melihat simulasi di museum dari berbagai arah. 
-		\item Posisi kamera dapat diubah untuk emngikuti perjalanan seorang pengunjung di dalam 
-		\item Pengguna dapat memilih apakah akan menggunakan teknik {\it flow tiles} atau tidak pada saat simulasi berlangsung
-		\item Jenis {\it flow tiles} yang digunakan dapat diubah-ubah pada saat simulasi sedang berlangsung
+		\item Sistem terintegrasi dengan Gymnasium API untuk mengakses dan menjalankan lingkungan simulasi pengujian, seperti CartPole, Taxi, dan Blackjack.  
 		
+		\item Program menyediakan pengaturan hyperparameter eksperimen, mencakup learning rate ($\alpha$), discount factor ($\gamma$), dan skema eksplorasi ($\epsilon$-greedy).  
+		
+		\item Sistem mampu mencatat dan performa agen selama pelatihan berlangsung, seperti cumulative reward dan jumlah langkah yang diambil per sesi
 	\end{itemize}
 	
 	\section{Detail Pengerjaan Tugas Akhir}
